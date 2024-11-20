@@ -1,6 +1,6 @@
 # Retail-Sales-Analysis-SQL-Project1
-##Project Overview
-###Project Title: Retail Sales Analysis
+**Project Overview
+**Project Title: Retail Sales Analysis
 
 ###Database: sql_project
 
