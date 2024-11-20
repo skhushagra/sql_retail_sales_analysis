@@ -1,15 +1,11 @@
 
-Here’s a well-structured and polished version of your README.md:
-
-markdown
-Copy code
 # Retail Sales Analysis
 
 ## 📋 Project Overview
 
 **Project Title:** Retail Sales Analysis  
 **Skill Level:** Beginner  
-**Database:** `p1_retail_db`  
+**Database:** `sql_project`  
 
 This project aims to demonstrate SQL skills and techniques used in data analysis by exploring, cleaning, and analyzing retail sales data. It involves creating a retail sales database, performing exploratory data analysis (EDA), and answering key business questions through SQL queries. This project is ideal for those starting their journey in data analysis and looking to build a strong foundation in SQL.
 
@@ -48,3 +44,19 @@ CREATE TABLE retail_sales
     cogs FLOAT,
     total_sale FLOAT
 );
+## 📝 Findings
+**Customer Demographics**:
+Customers span various age groups, with significant purchases in categories such as Clothing and Beauty.
+
+**High-Value Transactions**:
+Multiple transactions exceeded $1000, suggesting premium purchases.
+
+**Sales Trends**:
+Monthly analysis highlights variations in sales and helps identify peak seasons.
+
+**Customer Insights**:
+Top customers and popular product categories were identified, offering actionable insights for business decisions.
+
+
+## 🚀 Conclusion
+This project provided hands-on experience with SQL, showcasing the power of structured queries for data exploration, cleaning, and analysis. By analyzing retail sales data, we derived actionable business insights, identified trends, and understood customer behaviors, offering a comprehensive foundation for future SQL projects.
