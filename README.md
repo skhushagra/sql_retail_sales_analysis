@@ -19,7 +19,7 @@ This project is designed to demonstrate SQL skills and techniques typically used
 
 ### 1. Database Setup
 
-- **Database Creation**: The project starts by creating a database named `p1_retail_db`.
+- **Database Creation**: The project starts by creating a database named `sql_project`.
 - **Table Creation**: A table named `retail_sales` is created to store the sales data. The table structure includes columns for transaction ID, sale date, sale time, customer ID, gender, age, product category, quantity sold, price per unit, cost of goods sold (COGS), and total sale amount.
 
 ```sql
@@ -85,7 +85,7 @@ FROM retail_sales
 WHERE 
     category = 'Clothing'
     AND 
-    TO_CHAR(sale_date, 'YYYY-MM') = '2022-11'
+    Year(sale_date)=2022 and Month(sale_date)=11
     AND
     quantity >= 4
 ```
@@ -97,7 +97,7 @@ SELECT
     SUM(total_sale) as net_sale,
     COUNT(*) as total_orders
 FROM retail_sales
-GROUP BY 1
+GROUP BY category
 ```
 
 4. **Write a SQL query to find the average age of customers who purchased items from the 'Beauty' category.**:
@@ -125,26 +125,27 @@ GROUP
     BY 
     category,
     gender
-ORDER BY 1
+ORDER BY category
 ```
 
 7. **Write a SQL query to calculate the average sale for each month. Find out best selling month in each year**:
 ```sql
 SELECT 
-       year,
-       month,
+       sale_year,
+       sale_month,
     avg_sale
 FROM 
 (    
 SELECT 
-    EXTRACT(YEAR FROM sale_date) as year,
-    EXTRACT(MONTH FROM sale_date) as month,
+    YEAR(sale_date) as sale_year,
+    MONTH(sale_date) as sale_month,
     AVG(total_sale) as avg_sale,
-    RANK() OVER(PARTITION BY EXTRACT(YEAR FROM sale_date) ORDER BY AVG(total_sale) DESC) as rank
+    RANK() OVER(PARTITION BY YEAR(sale_date) ORDER BY AVG(total_sale) DESC) as ranking
 FROM retail_sales
-GROUP BY 1, 2
+GROUP BY sale_year,sale_month
 ) as t1
-WHERE rank = 1
+WHERE ranking = 1
+    
 ```
 
 8. **Write a SQL query to find the top 5 customers based on the highest total sales **:
@@ -153,8 +154,8 @@ SELECT
     customer_id,
     SUM(total_sale) as total_sales
 FROM retail_sales
-GROUP BY 1
-ORDER BY 2 DESC
+GROUP BY customer_id
+ORDER BY total_sales DESC
 LIMIT 5
 ```
 
